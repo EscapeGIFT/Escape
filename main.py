@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Bot configuration
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+BOT_TOKEN = os.getenv('8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c')
 ADMIN_ID = 1443301925
 NOTIFICATION_CHAT = "-1002085087426"
 DATA_FILE = "bot_data.json"
