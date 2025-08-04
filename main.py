@@ -34,7 +34,7 @@ LANGUAGES = {
         'menu_button': "☰ Menu",
         'balance': "📊 Balance",
         'gift_shop': "🛍️ Gift Shop",
-        'change_language': "🌐 Change Language",
+        'change_language': "Change Language",
         'tasks': "📝 Tasks",
         'restart_bot': "🔁 Restart Bot",
         'referral': "🔗 Referral",
