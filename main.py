@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, Bot, ReplyKeyboardMarkup, KeyboardButton, LabeledPrice
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes, PreCheckoutQueryHandler
 from telegram.error import TelegramError
-BOT_TOKEN = ('8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c')
+BOT_TOKEN = "8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c"
 print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
 # Load environment variables
 load_dotenv()
