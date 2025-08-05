@@ -1,3 +1,5 @@
+import sys
+print(f"Running Python version: {sys.version}")
 import json
 import os
 import asyncio
