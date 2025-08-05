@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, Bot, ReplyKeyboardMarkup, KeyboardButton, LabeledPrice
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes, PreCheckoutQueryHandler
 from telegram.error import TelegramError
-BOT_TOKEN = "8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c"
 print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
 # Load environment variables
 load_dotenv()
@@ -1959,14 +1958,17 @@ def main():
         return
     
     try:
+        # Загружаем данные (твоя функция load_data должна быть в коде)
         data = load_data()
-        data['channels'] = CHANNELS
+        data['channels'] = CHANNELS  # CHANNELS — у тебя должен быть этот список или словарь с каналами
         if 'banned_users' not in data:
             data['banned_users'] = []
-        save_data(data)
+        save_data(data)  # Твоя функция сохранения данных
 
-        application = Application.builder().token("8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c").build()
-        
+        # Создаем приложение бота с токеном
+        application = Application.builder().token(BOT_TOKEN).build()
+
+        # Добавляем обработчики команд и сообщений
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("menu", menu_command))
         application.add_handler(CommandHandler("admin", admin_command))
@@ -1974,14 +1976,16 @@ def main():
         application.add_handler(CallbackQueryHandler(handle_callback))
         application.add_handler(PreCheckoutQueryHandler(precheckout_callback))
         application.add_handler(MessageHandler(filters.SUCCESSFUL_PAYMENT, successful_payment_callback))
-        
+
+        # Запускаем периодическую проверку подписок (если есть функция check_subscriptions)
         application.job_queue.run_repeating(check_subscriptions, interval=3600, first=60)
 
         logger.info("Bot started and listening for messages...")
         print("Bot started and listening for messages...")
-        
+
+        # Запускаем поллинг бота
         application.run_polling(drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
-        
+
     except Exception as e:
         logger.error(f"Error starting bot: {e}")
         print(f"Error starting bot: {e}")
