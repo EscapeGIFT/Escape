@@ -8,21 +8,27 @@ from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, Bot, ReplyKeyboardMarkup, KeyboardButton, LabeledPrice
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes, PreCheckoutQueryHandler
 from telegram.error import TelegramError
-print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
-# Load environment variables
+
+# Загружаем переменные окружения
 load_dotenv()
 
-# Enableasync def check_subscriptions(context: ContextTypes.DEFAULT_TYPE):
-admin_id = 1443301925  # твой ID
-    
+# Получаем токен из .env
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
+
+# Проверка подписок (если она у тебя есть)
+async def check_subscriptions(context: ContextTypes.DEFAULT_TYPE):
+    admin_id = 1443301925  # твой ID
+    await context.bot.send_message(chat_id=admin_id, text="Проверка подписок прошла!")
+
+# Логирование
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
-# Bot configuration
-
+# Конфигурация бота
 ADMIN_ID = 1443301925
 NOTIFICATION_CHAT = "-1002085087426"
 DATA_FILE = "bot_data.json"
