@@ -1949,7 +1949,10 @@ async def handle_tasks_callback(query, context: ContextTypes.DEFAULT_TYPE):
                 )
 
 def main():
-    
+if not BOT_TOKEN:
+        logger.error("ERROR: Please set BOT_TOKEN environment variable in Secrets")
+        print("ERROR: Please set BOT_TOKEN environment variable in Secrets")
+        return
     try:
         # Initialize bot data with your channels
         data = load_data()
