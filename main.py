@@ -1949,13 +1949,12 @@ async def handle_tasks_callback(query, context: ContextTypes.DEFAULT_TYPE):
                 )
 
 def main():
-if not BOT_TOKEN:
+    if not BOT_TOKEN:
         logger.error("ERROR: Please set BOT_TOKEN environment variable in Secrets")
         print("ERROR: Please set BOT_TOKEN environment variable in Secrets")
         return
     
     try:
-        # Initialize bot data with your channels
         data = load_data()
         data['channels'] = CHANNELS
         if 'banned_users' not in data:
@@ -1963,8 +1962,7 @@ if not BOT_TOKEN:
         save_data(data)
 
         application = Application.builder().token(BOT_TOKEN).build()
-
-        # Add handlers
+        
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("menu", menu_command))
         application.add_handler(CommandHandler("admin", admin_command))
@@ -1972,11 +1970,9 @@ if not BOT_TOKEN:
         application.add_handler(CallbackQueryHandler(handle_callback))
         application.add_handler(PreCheckoutQueryHandler(precheckout_callback))
         application.add_handler(MessageHandler(filters.SUCCESSFUL_PAYMENT, successful_payment_callback))
-
-        # Add periodic subscription checker (runs every hour)
+        
         application.job_queue.run_repeating(check_subscriptions, interval=3600, first=60)
 
-        # Start the bot
         logger.info("Bot started and listening for messages...")
         print("Bot started and listening for messages...")
         
