@@ -14,8 +14,8 @@ print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
 load_dotenv()
 
 # Enableasync def check_subscriptions(context: ContextTypes.DEFAULT_TYPE):
-    admin_id = 1443301925  # твой ID
-    await context.bot.send_message(chat_id=admin_id, text="Проверка подписок прошла!") logging
+admin_id = 1443301925  # твой ID
+    
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -1949,7 +1949,9 @@ async def handle_tasks_callback(query, context: ContextTypes.DEFAULT_TYPE):
                     get_text(user_id, 'no_tasks'),
                     reply_markup=reply_markup
                 )
-
+async def check_subscriptions(context: ContextTypes.DEFAULT_TYPE):
+    admin_id = 1443301925  # твой ID
+    await context.bot.send_message(chat_id=admin_id, text="Проверка подписок прошла!")
 def main():
     if not BOT_TOKEN:
         logger.error("ERROR: Please set BOT_TOKEN environment variable in Secrets")
