@@ -1965,7 +1965,7 @@ def main():
             data['banned_users'] = []
         save_data(data)
 
-        application = Application.builder().token(BOT_TOKEN).build()
+        application = Application.builder().token(8398858310:AAFPis_fFfWNi4h4Iqc0HVl3trzMONtCD8c).build()
         
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("menu", menu_command))
