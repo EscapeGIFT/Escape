@@ -13,7 +13,9 @@ print(f"Loaded BOT_TOKEN: {BOT_TOKEN}")
 # Load environment variables
 load_dotenv()
 
-# Enable logging
+# Enableasync def check_subscriptions(context: ContextTypes.DEFAULT_TYPE):
+    admin_id = 1443301925  # твой ID
+    await context.bot.send_message(chat_id=admin_id, text="Проверка подписок прошла!") logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
